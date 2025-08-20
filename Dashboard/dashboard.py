@@ -1,3 +1,5 @@
+pip install -r requirements.txt
+
 # dashboard.py
 
 import streamlit as st
