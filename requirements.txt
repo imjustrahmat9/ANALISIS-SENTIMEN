@@ -3,5 +3,6 @@ pandas
 matplotlib
 seaborn
 wordcloud
+textblob
 scikit-learn
-openpyxl
+
