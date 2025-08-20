@@ -1,8 +1,7 @@
 # 📊 Dashboard Analisis Sentimen Komentar YouTube TVRI 2024
 
 Dashboard ini dibuat menggunakan **Streamlit** untuk menganalisis komentar penonton di kanal YouTube TVRI tahun 2024.  
-Analisis meliputi *data cleaning*, *sentiment classification* (positif, netral, negatif), visualisasi distribusi, wordcloud, filter komentar, hingga evaluasi model (classification report & confusion matrix).
-
+Analisis meliputi *data cleaning*, *sentiment classification* (positif, netral, negatif), visualisasi distribusi, wordcloud, filter komentar, hingga evaluasi model (classification report & confusion matrix)
 ---
 
 ## 🚀 Fitur Utama
