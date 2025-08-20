@@ -7,13 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1LS8kDInT28Xz_Sp0AUi4W75uqJQ-xcqL
 """
 
-import streamlit as st
-import pandas as pd
-import seaborn as sns
-from wordcloud import WordCloud
-from sklearn.metrics import classification_report, confusion_matrix
-import io
-
 # ====================
 # 1. Judul Dashboard
 # ====================
