@@ -4,35 +4,35 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
-# Fungsi load data dengan path relatif
+st.set_page_config(page_title="Dashboard Sentimen TVRI 2024", layout="wide")
+
 @st.cache_data
 def load_data():
-    base_path = os.path.dirname(__file__)  # lokasi file dashboard.py
-    file_path = os.path.join(base_path, "../data/sample_dataset_tvri.csv")
+    file_path = os.path.join("data", "sample_dataset_tvri.csv")
     return pd.read_csv(file_path)
 
-# Load data
 df = load_data()
 
-# Judul
-st.title("📊 Analisis Sentimen TVRI")
+st.title("📊 Analisis Sentimen TVRI 2024")
+st.write("Dashboard ini menampilkan hasil analisis sentimen publik terhadap TVRI berdasarkan dataset yang tersedia.")
 
-# Preview data
-st.subheader("🔍 Data Awal")
-st.dataframe(df.head())
+# Tampilkan data
+with st.expander("Lihat Dataset"):
+    st.dataframe(df.head())
 
-# Statistik sederhana
-st.subheader("📈 Statistik Data")
-st.write(df.describe())
+# Distribusi Sentimen
+st.subheader("Distribusi Sentimen")
+fig, ax = plt.subplots()
+sns.countplot(data=df, x="sentiment", ax=ax)
+st.pyplot(fig)
 
-# Visualisasi Sentimen
-st.subheader("📊 Distribusi Sentimen")
-if "sentimen" in df.columns:
-    fig, ax = plt.subplots()
-    sns.countplot(x="sentimen", data=df, ax=ax)
-    st.pyplot(fig)
-else:
-    st.warning("Kolom 'sentimen' tidak ditemukan di dataset.")
+# Distribusi Panjang Teks
+st.subheader("Distribusi Panjang Teks")
+df["text_length"] = df["text"].apply(lambda x: len(str(x).split()))
+fig, ax = plt.subplots()
+sns.histplot(df["text_length"], bins=30, kde=True, ax=ax)
+st.pyplot(fig)
 
-
-
+# Statistik Sentimen
+st.subheader("Statistik Sentimen")
+st.write(df.groupby("sentiment").agg({"text_length": "mean"}))
